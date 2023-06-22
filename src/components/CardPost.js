@@ -1,18 +1,33 @@
-// import InfoPost from "./InfoPost";
+import InfoPost from "./InfoPost";
+import { Link } from "react-router-dom";
+import { config } from '../config'
 
-export default function CardPost({ thumbnail, 
-    // ...infoPost 
+import { Figure } from "react-bootstrap";
+
+export default function CardPost({ 
+    image, 
+    ...infoPost 
 }) {
+
+
   return (
     <article>
-      {/* <Link href="/detail">
-        <a>
-          <img src={thumbnail} className="w-full rounded mb-4" />
-        </a>
-      </Link> */}
-      {/* <InfoPost
+        
+      <Link href="/detail">
+        <Figure>
+          <Figure.Image
+          width={171}
+          height={180}
+          alt='171x180'
+          src={`${config.api_image}${image.name}`}
+          />
+
+          
+        </Figure>
+      </Link>
+      <InfoPost
         {...infoPost}
-      /> */}
+      />
     </article>
   );
 }

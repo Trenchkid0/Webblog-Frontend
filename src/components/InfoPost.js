@@ -2,28 +2,26 @@ import PostMetaTitle from '../components/PostMetaTitle';
 import PostAuthor from '../components/PostAuthor';
 
 export default function InfoPost({
-  category,
+  topic,
   date,
   title,
-  shortDescription,
-  authorAvatar,
-  authorName,
+  deskripsi,
+  participant,
   authorJob
 }) {
   return (
     <>
       <PostMetaTitle 
-        category={category} 
+        topic={topic} 
         date={date}
         title={title}
       />
       <p className="text-white/60 mt-5 w-10/12">
-        {shortDescription}
+        {deskripsi}
       </p>
       <PostAuthor
-        authorName={authorName}
-        authorJob={authorJob}
-        authorAvatar={authorAvatar}
+        partcipant={participant}
+        
       />
     </>
   );

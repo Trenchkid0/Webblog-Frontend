@@ -1,9 +1,11 @@
 import React from 'react';
 import SButtons from '../../components/SButton';
 import TextInputWithLabel from '../../components/TextInputWithLabel';
-import { Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
+  const navigate = useNavigate();
   return (
     <Form>
       <TextInputWithLabel
@@ -30,6 +32,13 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
       >
         Submit
       </SButtons>
+      <SButtons
+        variant='primary'
+        action={()=>navigate('/signup')}
+      >
+        Belum punya akun?
+      </SButtons>
+      
     </Form>
   );
 }

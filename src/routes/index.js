@@ -2,10 +2,13 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import GuardRoute from '../components/GuardRoute';
 import GuestOnlyRoute from '../components/GuestOnlyRoute';
 
-import Login from '../pages/signin';
-import Layout from '../components/Layout';
 
-export function AppRoutes() {
+import { HeroRoute } from './HeroRoutes';
+
+import Login from '../pages/signin';
+import Signup from '../pages/signup';
+
+export function AppRoutes() { 
     return (
       <Routes>
         <Route
@@ -13,6 +16,16 @@ export function AppRoutes() {
           element={
             <GuestOnlyRoute>
               <Login />
+              
+            </GuestOnlyRoute>
+          }
+        />
+        <Route
+          path='signup'
+          element={
+            <GuestOnlyRoute>
+              <Signup />
+              
             </GuestOnlyRoute>
           }
         />
@@ -20,11 +33,14 @@ export function AppRoutes() {
           path='/'
           element={
             <>
-              <Layout />
+               
+              
               <GuardRoute />
             </>
           }
         >    
+         <Route path='hero/*' element={<HeroRoute />} />
+         <Route path='' element={<Navigate to='/hero' replace={true} />} />
         </Route>
       </Routes>
     );

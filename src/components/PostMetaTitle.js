@@ -1,19 +1,20 @@
+import { formatDate } from '../utils/formatDate';
 
-export default function PostMetaTitle({ category, title, date, center }) {
+export default function PostMetaTitle({ topic,date,title}) {
   return (
     <>
       <div className="flex items-center text-white/60 space-x-4">
         <div className="uppercase">
-          {category}
+          {title}
         </div>
         <span>&bull;</span>
         <div>
-          {date}
+        {formatDate(date)}
         </div>
       </div>
-      <h2 className={`text-2xl mt-4 ${center ? 'text-center' : ''}`}>
+      {/* <h2 className={`text-2xl mt-4 ${center ? 'text-center' : ''}`}> */}
         {/* <Link href="/detail"><a>{title}</a></Link> */}
-      </h2>
+      {/* </h2> */}
     </>
   );
 }

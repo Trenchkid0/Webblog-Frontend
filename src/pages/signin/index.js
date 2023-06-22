@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Container } from 'react-bootstrap';
+import { Button, Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 // import SAlert from '../../components/Alert';
 import SForm from './form';
@@ -43,7 +43,7 @@ function PageSignin() {
         )
       );
       setIsLoading(false);
-      navigate('/');
+      navigate('/hero');
     } else {
       setIsLoading(false);
     //   setAlert({

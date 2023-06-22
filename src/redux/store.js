@@ -7,11 +7,15 @@ import {
 
 import thunk from 'redux-thunk';
 import authReducer from './auth/reducer';
+import blogReducer from './blog/reducer';
+import notifReducer from './notif/reducer';
 
 const composerEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducers = combineReducers({
     auth: authReducer,
+    blog:blogReducer,
+    notif: notifReducer,
 
   });
 
