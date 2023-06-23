@@ -16,8 +16,8 @@ export default function CardPost({
       <Link href="/detail">
         <Figure>
           <Figure.Image
-          width={171}
-          height={180}
+          width={320}
+          height={320}
           alt='171x180'
           src={`${config.api_image}${image.name}`}
           />

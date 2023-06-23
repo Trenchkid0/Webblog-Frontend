@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import { useEffect,useState } from 'react';
+import { useEffect} from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 
 import Layout from '../../components/Layout';
@@ -19,11 +19,6 @@ export default function Hero() {
      useEffect(() => {
         dispatch(fetchBlog());
     }, [dispatch]);
-
-    
-
-   
-  
 
     
   return (

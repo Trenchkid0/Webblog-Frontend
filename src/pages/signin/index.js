@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Card, Container } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-// import SAlert from '../../components/Alert';
+import SAlert from '../../components/Alert';
 import SForm from './form';
 import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
@@ -16,11 +16,11 @@ function PageSignin() {
     password: '',
   });
 
-//   const [alert, setAlert] = useState({
-//     status: false,
-//     message: '',
-//     type: '',
-//   });
+  const [alert, setAlert] = useState({
+    status: false,
+    message: '',
+    type: '',
+  });
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,11 +34,14 @@ function PageSignin() {
 
     const res = await postData(`/auth/signin`, form);
 
+    console.log(res)
+
     if (res?.data?.data) {
       dispatch(
         userLogin(
           res.data.data.token,
           res.data.data.role,
+          res.data.data.firstName,
         //   res.data.data.refreshToken
         )
       );
@@ -46,20 +49,20 @@ function PageSignin() {
       navigate('/hero');
     } else {
       setIsLoading(false);
-    //   setAlert({
-    //     status: true,
-    //     message: res?.response?.data?.msg ?? 'Internal server error',
-    //     type: 'danger',
-    //   });
+      setAlert({
+        status: true,
+        message: res?.response?.data?.msg ?? 'Internal server error',
+        type: 'danger',
+      });
     }
   };
 
   return (
     
     <Container>
-      {/* <div className='m-auto' style={{ width: '50%' }}>
+      <div className='m-auto' style={{ width: '50%' }}>
         {alert.status && <SAlert type={alert.type} message={alert.message} />}
-      </div> */}
+      </div>
       <Card style={{ width: '50%'}} className='m-auto mt-5 '>
         <Card.Body className='h-96'> 
           <Card.Title className='text-center'>Form Signin</Card.Title>
