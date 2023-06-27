@@ -12,7 +12,7 @@ import CardPost from '../../components/CardPost';
 import { fetchBlog } from '../../redux/blog/action';
 
 
-export default function Hero() {
+export default function Blog() {
     const dispatch = useDispatch();
     const blog = useSelector((state) => state.blog);
 

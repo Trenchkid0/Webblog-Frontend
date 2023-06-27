@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchBlog } from '../redux/blog/action';
+
 
 
 

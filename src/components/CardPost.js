@@ -16,8 +16,7 @@ export default function CardPost({
       <Link href="/detail">
         <Figure>
           <Figure.Image
-          width={320}
-          height={320}
+          className="w-full rounded mb-4"
           alt='171x180'
           src={`${config.api_image}${image.name}`}
           />

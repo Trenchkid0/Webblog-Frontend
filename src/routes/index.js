@@ -3,13 +3,13 @@ import GuardRoute from '../components/GuardRoute';
 import GuestOnlyRoute from '../components/GuestOnlyRoute';
 
 
-import { HeroRoute } from './HeroRoutes';
+import { BlogRoute } from './BlogRoutes';
+import { MyBlogRoute } from './MyBlogRoutes';
 
 import Login from '../pages/signin';
 import Signup from '../pages/signup';
 
-import Layout from '../components/Layout';
-import Container from '../components/Container';
+import Blog from '../pages/blog';
 
 
 export function AppRoutes() { 
@@ -37,23 +37,15 @@ export function AppRoutes() {
           path='/'
           element={
             <>
-              {/* <Layout>
-                <Head>
-                  <title>Home &mdash; Epictetus</title>
-                </Head>
-                <Container>
-                  
-                  <div className="flex -mx-4 flex-wrap mt-6">
-                    
-                  </div>
-                </Container>
-              </Layout> */}
+
+            <Blog />
               <GuardRoute />
             </>
           }
         >    
-         <Route path='hero/*' element={<HeroRoute />} />
-         <Route path='' element={<Navigate to='/hero' replace={true} />} />
+         <Route path='blog/*' element={<BlogRoute />} />
+         <Route path='myblog/*' element={<MyBlogRoute />} />
+         <Route path='' element={<Navigate to='/blog' replace={true} />} />
         </Route>
       </Routes>
     );

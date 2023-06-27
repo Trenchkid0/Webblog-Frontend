@@ -34,7 +34,6 @@ function PageSignin() {
 
     const res = await postData(`/auth/signin`, form);
 
-    console.log(res)
 
     if (res?.data?.data) {
       dispatch(
@@ -42,7 +41,6 @@ function PageSignin() {
           res.data.data.token,
           res.data.data.role,
           res.data.data.firstName,
-        //   res.data.data.refreshToken
         )
       );
       setIsLoading(false);
