@@ -11,6 +11,8 @@ import Container from '../../components/Container';
 import CardPost from '../../components/CardPost';
 import { fetchBlog } from '../../redux/blog/action';
 
+import { useState } from 'react';
+
 
 export default function Blog() {
     const dispatch = useDispatch();
@@ -23,25 +25,24 @@ export default function Blog() {
     
   return (
     <Layout>
-    <title>Home &mdash; Epictetus</title>
-    <Container>
-      {blog.status === 'process'?(
-        <div className='flex items-center justify-center'>
-          <Spinner animation='border' variant='primary' />
-        </div>
-      ):blog.data.length ? (
-          <div className="flex -mx-4 flex-wrap mt-6">
-            {blog.data.map(post => ( 
-              <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
-              <CardPost {...post} />
+      <Container>
+        {blog.status === 'process'?(
+          <div className='flex items-center justify-center'>
+            <Spinner animation='border' variant='primary' />
           </div>
-        ))}
-        </div>
-      ):(
-        <h1>Tidak Ditemukan Data</h1>
-      )}
+        ):blog.data.length ? (
+            <div className="flex -mx-4 flex-wrap mt-6">
+              {blog.data.map(post => ( 
+                <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
+                <CardPost {...post} />
+            </div>
+          ))}
+          </div>
+        ):(
+          <h1>Tidak Ditemukan Data</h1>
+        )}
         
     </Container>
-</Layout>
+  </Layout>
   )
 }

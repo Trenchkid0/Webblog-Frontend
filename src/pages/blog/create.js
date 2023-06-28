@@ -1,56 +1,155 @@
 import React from 'react'
-import { useEffect,useState } from 'react'
-import { useSelector } from 'react-redux'
-import { getData } from '../../utils/fetch'
+import { postData } from '../../utils/fetch';
+import { useState } from 'react';
+import { setNotif } from '../../redux/notif/action';
 
-// import Layout from '../../components/Layout'
-// import Container from '../../components/Container'
-// import { Spinner } from 'react-bootstrap'
-// import CardPost from '../../components/CardPost'
+import { useDispatch} from 'react-redux'; 
+import { useNavigate } from 'react-router-dom';
+
+
+
+import SForm from './form'
 
 
 export default function BlogCreate() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    const [userId, setUserId] = useState()
-    const [blogUserId, setBlogUserId] = useState()
-    const {token} = useSelector((state) => state.auth)
-    const blog =useSelector((state) =>state.blog)
-    // setUserId(token.participantsId);
-    // console.log(userId);
+    const [form, setForm] = useState({
+      avatar: '',
+      file: '',
+      topic: '',
+      date: '',
+      title: '',
+      deskripsi: '',
+      content: '',  
+    });
 
-    // useEffect(() => {
-    //     const fetchDatas = async () => {
-    //     try {
-    //         const res = await getData(`/cms/writer/${blogUserId}`)
-    //         console.log(res)
-    //         setBlogUserId(res.data);
-    //     } catch (error) {}
-    // }
-    // fetchDatas();
-    // }, [])
+    const [alert, setAlert] = useState({
+      status: false,
+      type: '',
+      message: '',
+      
+    });
+
+    const [word, setWord] = useState(0)
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const uploadImage = async (file) => {
+      let formData = new FormData();
+      formData.append('avatar', file);
+      const res = await postData('/cms/images', formData, true);
+      return res;
+    };
     
+    const handleChange = async (e) => {
+      if (e.target.name === 'avatar') {
+        if (
+          e?.target?.files[0]?.type === 'image/jpg' ||
+          e?.target?.files[0]?.type === 'image/png' ||
+          e?.target?.files[0]?.type === 'image/jpeg'
+        ) {
+          var size = parseFloat(e.target.files[0].size / 3145728).toFixed(2);
+  
+          if (size > 2) {
+            setAlert({
+              ...alert,
+              status: true,
+              type: 'danger',
+              message: 'Please select image size less than 3 MB',
+            });
+            setForm({
+              ...form,
+              file: '',
+              [e.target.name]: '',
+            });
+          } else {
+            const res = await uploadImage(e.target.files[0]);
+  
+            setForm({
+              ...form,
+              file: res.data.data._id,
+              [e.target.name]: res.data.data.name,
+            });
+          }
+        } else {
+          setAlert({
+            ...alert,
+            status: true,
+            type: 'danger',
+            message: 'type image png | jpg | jpeg',
+          });
+          setForm({
+            ...form,
+            file: '',
+            [e.target.name]: '',
+          });
+        }
+      }else {
+        setForm({ ...form, [e.target.name]: e.target.value });
+
+        // if(e.target.name === 'content') {
+        //   const limitWords = 1200;
+        //   if(e.target.value.length < limitWords) {
+        //     setWord(e.target.value.length)
+        //   }else{
+            
+        //   }
+
+        // }
+
+      }
+    };
+
+    const handleSubmit = async () => {
+      setIsLoading(true);
+  
+      const payload = {
+        image: form.file,
+        topic: form.topic,
+        date: form.date,
+        title: form.title,
+        deskripsi: form.deskripsi,
+        content: form.content,
+      };
+  
+      const res = await postData('/cms/writer', payload);
+  
+      if (res.data.data) {
+        dispatch(
+          setNotif(
+            true,
+            'success',
+            `berhasil tambah blog ${res.data.data.title}`
+          )
+        );
+        navigate('/blog');
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        setAlert({
+          ...alert,
+          status: true,
+          type: 'danger',
+          message: res.response.data.msg,
+        });
+      }
+    };
+
+
   return (
-    <h1>asw</h1>
-    // <Layout>
-    // <title>Home &mdash; Epictetus</title>
-    // <Container>
-    //   {blog.status === 'process'?(
-    //     <div className='flex items-center justify-center'>
-    //       <Spinner animation='border' variant='primary' />
-    //     </div>
-    //   ):blogUserId.data.length ? (
-    //       <div className="flex -mx-4 flex-wrap mt-6">
-    //         {blog.data.map(post => ( 
-    //           <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
-    //           <CardPost {...post} />
-    //       </div>
-    //     ))}
-    //     </div>
-    //   ):(
-    //     <h1>Tidak Ditemukan Data</h1>
-    //   )}
-        
-    // </Container>
-    // </Layout>
+    
+
+      <SForm
+        form={form}
+        isLoading={isLoading}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        word={word}
+      />
+
+    
+    
   )
 }

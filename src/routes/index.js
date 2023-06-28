@@ -4,12 +4,11 @@ import GuestOnlyRoute from '../components/GuestOnlyRoute';
 
 
 import { BlogRoute } from './BlogRoutes';
-import { MyBlogRoute } from './MyBlogRoutes';
 
 import Login from '../pages/signin';
 import Signup from '../pages/signup';
 
-import Blog from '../pages/blog';
+import Navbar from '../components/Navbar';
 
 
 export function AppRoutes() { 
@@ -37,14 +36,14 @@ export function AppRoutes() {
           path='/'
           element={
             <>
-
-            <Blog />
+                <Navbar/>
               <GuardRoute />
             </>
           }
-        >    
+        >
+
+              
          <Route path='blog/*' element={<BlogRoute />} />
-         <Route path='myblog/*' element={<MyBlogRoute />} />
          <Route path='' element={<Navigate to='/blog' replace={true} />} />
         </Route>
       </Routes>

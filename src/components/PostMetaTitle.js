@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function PostMetaTitle({ topic,date,title}) {
   return (
     <>
-      <div className="flex items-center text-white/60 space-x-4">
+      <div className="flex items-center text-white/60 space-x-2">
         <div className="uppercase">
           {topic}
         </div>

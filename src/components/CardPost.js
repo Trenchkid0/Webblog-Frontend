@@ -11,9 +11,10 @@ export default function CardPost({
 
 
   return (
+    <>
     <article>
         
-      <Link href="/detail">
+      <Link href={`/detail/${infoPost._id}`}>
         <Figure>
           <Figure.Image
           className="w-full rounded mb-4"
@@ -28,5 +29,8 @@ export default function CardPost({
         {...infoPost}
       />
     </article>
+    
+    
+    </>
   );
 }

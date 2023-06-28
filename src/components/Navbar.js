@@ -24,13 +24,14 @@ export default function Navbar() {
     localStorage.clear();
     window.location.href = '/';
   };
+  // console.log(token.participantsId);
 
     
   return (
     <>
 
     
-    <nav className="py-10">
+    <nav className="pt-5 bg-gradient-to-b from-gray-600 to-gray-900 text-white">
       <Container>
        {token ?(
         <>
@@ -60,8 +61,8 @@ export default function Navbar() {
             
               <li className='cursor-pointer ml-48 list-none' onClick={()=>handleLogout()}>LogOut</li>
           </div>  
-          {/* <Button className='cursor-pointer -mt-16 ml-[54rem] w-32  btn-light ' action={() => navigate('/categories/create')} >Tulis Blog</Button> */}
-          <SButton variant='cursor-pointer -mt-16 ml-[54rem] w-32  btn-light' action={()=>navigate('/myblog')} >Tulis blog</SButton>
+
+          <SButton variant='cursor-pointer -mt-16 ml-[54rem] w-32  btn-light' action={()=>navigate(`/blog/create`)} >Tulis blog</SButton>
         </>
           
 
