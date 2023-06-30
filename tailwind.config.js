@@ -10,6 +10,10 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['Patrick Hand', 'Arial', 'sans-serif']
+      },
+      height: {
+        '32': '35rem',
+        '20': '20rem',
       }
     },
   },

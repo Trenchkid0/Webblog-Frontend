@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 // import SAlert from '../../components/Alert';
 import SForm from './form';
 import SAlert from '../../components/Alert'
-import Button from 'react-bootstrap';
+import Layout from '../../components/Layout';
 
 import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
@@ -121,32 +121,39 @@ function PageSignup() {
         message: res.response.data.msg,
       });
     }
-    
-    // navigate('/login');
   };
   
 
   return (
+    <>
+      <Layout>
+
+        <Container>
+          <div className='m-auto' style={{ width: '50%' }}>
+            {alert.status && <SAlert type={alert.type} message={alert.message} />}
+          </div>
+          <Card style={{ width: '50%'}} className='m-auto'>
+            <Card.Body className='h-[35rem] mt-10 '> 
+              <Card.Title className='text-center'>Form signup</Card.Title>
+              <SForm
+                form={form}
+                handleChange={handleChange}
+                isLoading={isLoading}
+                handleSubmit={handleSubmit}
+                
+              />
+            </Card.Body>
+          </Card>
+          
+        </Container>
+
+      </Layout>
+
+
     
-    <Container>
-      <div className='m-auto' style={{ width: '50%' }}>
-        {alert.status && <SAlert type={alert.type} message={alert.message} />}
-      </div>
-      <Card style={{ width: '50%'}} className='m-auto mt-5 '>
-        <Card.Body className='h-96'> 
-          <Card.Title className='text-center'>Form signup</Card.Title>
-          <SForm
-            form={form}
-            
-            handleChange={handleChange}
-            isLoading={isLoading}
-            handleSubmit={handleSubmit}
-            
-          />
-        </Card.Body>
-      </Card>
-      
-    </Container>
+    
+    </>
+    
   );
 }
 

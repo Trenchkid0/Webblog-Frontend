@@ -27,13 +27,13 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
       <SButtons
         loading={isLoading}
         disabled={isLoading}
-        variant='primary'
+        variant='primary mt-5 mr-5'
         action={handleSubmit}
       >
         Submit
       </SButtons>
       <SButtons
-        variant='primary'
+        variant='primary mt-5'
         action={()=>navigate('/signup')}
       >
         Belum punya akun?

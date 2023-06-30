@@ -7,8 +7,8 @@ import { useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
-
 import SForm from './form'
+import Layout from '../../components/Layout';
 
 
 export default function BlogCreate() {
@@ -32,7 +32,14 @@ export default function BlogCreate() {
       
     });
 
-    const [word, setWord] = useState(0)
+    const [word, setWord] = useState({
+      content: 0,
+      topic: 0,
+    })
+    const [alertWord, setAlertWord] = useState({
+      content:'',
+      topic: '',
+    })
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -89,16 +96,11 @@ export default function BlogCreate() {
       }else {
         setForm({ ...form, [e.target.name]: e.target.value });
 
-        // if(e.target.name === 'content') {
-        //   const limitWords = 1200;
-        //   if(e.target.value.length < limitWords) {
-        //     setWord(e.target.value.length)
-        //   }else{
-            
-        //   }
+        setWord({...word,[e.target.name]:e.target.value.length});
+       
 
-        // }
 
+       word.content >= 1200? setAlertWord('text-red-500'):setAlertWord('text-white');
       }
     };
 
@@ -140,6 +142,8 @@ export default function BlogCreate() {
 
   return (
     
+    <>
+    <Layout>
 
       <SForm
         form={form}
@@ -147,7 +151,12 @@ export default function BlogCreate() {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         word={word}
+        alertword={alertWord}
       />
+
+    </Layout>
+    
+    </>
 
     
     

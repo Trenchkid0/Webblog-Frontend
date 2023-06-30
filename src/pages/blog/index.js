@@ -11,8 +11,6 @@ import Container from '../../components/Container';
 import CardPost from '../../components/CardPost';
 import { fetchBlog } from '../../redux/blog/action';
 
-import { useState } from 'react';
-
 
 export default function Blog() {
     const dispatch = useDispatch();
@@ -24,6 +22,8 @@ export default function Blog() {
 
     
   return (
+    <>
+    
     <Layout>
       <Container>
         {blog.status === 'process'?(
@@ -32,7 +32,7 @@ export default function Blog() {
           </div>
         ):blog.data.length ? (
             <div className="flex -mx-4 flex-wrap mt-6">
-              {blog.data.map(post => ( 
+              {blog.data.toReversed().map(post => ( 
                 <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
                 <CardPost {...post} />
             </div>
@@ -44,5 +44,7 @@ export default function Blog() {
         
     </Container>
   </Layout>
+    
+    </>
   )
 }

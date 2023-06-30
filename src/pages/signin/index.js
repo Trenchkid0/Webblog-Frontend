@@ -6,6 +6,7 @@ import SForm from './form';
 import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/auth/action';
+import Layout from '../../components/Layout';
 
 function PageSignin() {
   const dispatch = useDispatch();
@@ -56,13 +57,14 @@ function PageSignin() {
   };
 
   return (
-    
+    <Layout>
+
     <Container>
       <div className='m-auto' style={{ width: '50%' }}>
         {alert.status && <SAlert type={alert.type} message={alert.message} />}
       </div>
-      <Card style={{ width: '50%'}} className='m-auto mt-5 '>
-        <Card.Body className='h-96'> 
+      <Card style={{ width: '50%'}} className='m-auto top-28 '>
+        <Card.Body className='h-[20rem] mt-12'> 
           <Card.Title className='text-center'>Form Signin</Card.Title>
           <SForm
             form={form}
@@ -74,6 +76,9 @@ function PageSignin() {
         </Card.Body>
       </Card>
     </Container>
+
+    </Layout>
+    
   );
 }
 

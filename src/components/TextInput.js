@@ -9,6 +9,7 @@ function TextInput({ name, value, type, onChange, placeholder }) {
       value={value} // state
       placeholder={placeholder}
       onChange={onChange}
+      className='bg-transparent caret-pink-50 '
     />
   );
 }

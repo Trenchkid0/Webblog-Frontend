@@ -11,6 +11,7 @@ import Signup from '../pages/signup';
 import Navbar from '../components/Navbar';
 
 
+
 export function AppRoutes() { 
     return (
       <Routes>
@@ -41,7 +42,7 @@ export function AppRoutes() {
             </>
           }
         >
-
+        
               
          <Route path='blog/*' element={<BlogRoute />} />
          <Route path='' element={<Navigate to='/blog' replace={true} />} />

@@ -2,16 +2,30 @@
 import Container from './Container';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {useSelector } from 'react-redux';
 // import { Figure } from 'react-bootstrap';
 import { config } from '../config';
 import { Button, Image } from 'react-bootstrap';
 import SButton from './SButton';
 
-
 import { useNavigate } from 'react-router-dom';
 
+
+
+import { useDispatch,useSelector } from 'react-redux';
+
+import Layout from '../components/Layout';
+import { Spinner } from 'react-bootstrap';
+
+import CardPost from '../components/CardPost';
+import { fetchBlog } from '../redux/blog/action';
+
 export default function Navbar() { 
+  const dispatch = useDispatch();
+  const blog = useSelector((state) => state.blog);
+
+  useEffect(() => {
+     dispatch(fetchBlog());
+ }, [dispatch]);
 
   // const [auth, setAuth] = useState()
 
@@ -83,7 +97,10 @@ export default function Navbar() {
               <SButton variant='cursor-pointer ml-96 w-24  btn-light'  action={()=>navigate('/login')}>Sigin</SButton>
 
           </div>
+
+    
           </>
+          
         
       
 
@@ -91,6 +108,31 @@ export default function Navbar() {
        )}
       </Container>
     </nav>
+
+    {!token ?(
+        <Layout>
+        <Container>
+          {blog.status === 'process'?(
+            <div className='flex items-center justify-center'>
+              <Spinner animation='border' variant='primary' />
+            </div>
+          ):blog.data.length ? (
+              <div className="flex -mx-4 flex-wrap mt-6">
+                {blog.data.toReversed().map(post => ( 
+                  <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
+                  <CardPost {...post} />
+              </div>
+            ))}
+            </div>
+          ):(
+            <h1>Tidak Ditemukan Data</h1>
+          )}
+          
+      </Container>
+    </Layout>
+    ):(
+      ''
+    ) }
     
     </>
   );
