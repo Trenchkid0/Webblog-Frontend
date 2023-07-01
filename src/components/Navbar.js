@@ -27,18 +27,14 @@ export default function Navbar() {
      dispatch(fetchBlog());
  }, [dispatch]);
 
-  // const [auth, setAuth] = useState()
-
   const navigate = useNavigate();
-  
-  // const userInfo = useSelector((state) => state.auth);
+
   const {token} = useSelector((state) => state.auth)
-  // console.log(token.participantsId);
+
   const handleLogout = () => {
     localStorage.clear();
     window.location.href = '/';
   };
-  // console.log(token.participantsId);
 
     
   return (
@@ -64,9 +60,10 @@ export default function Navbar() {
             <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 lg:bg-none fixed lg:static top-0 h-full lg:h-auto p-10 lg:p-0 transition-all`}>
             
               <ul className="lg:space-x-14 flex lg:items-center flex-col lg:flex-row space-y-4 lg:space-y-0">
-                <li><Link href="/" className='text-white no-underline'> opik</Link></li>
+                <li onClick={()=>navigate('/blog')} ><Link className='text-white no-underline'> Home </Link></li>
                 <li>Front-End</li>
                 <li>Back-End</li>
+                <li>MyBlog</li>
                 
               </ul>
 

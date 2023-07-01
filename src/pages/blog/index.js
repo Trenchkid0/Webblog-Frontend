@@ -39,7 +39,7 @@ export default function Blog() {
           ))}
           </div>
         ):(
-          <h1>Tidak Ditemukan Data</h1>
+          ''
         )}
         
     </Container>

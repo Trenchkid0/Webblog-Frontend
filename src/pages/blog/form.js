@@ -25,12 +25,31 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
       )}
       <TextInputWithLabel
         placeholder={'Masukan Avatar'}
-        label={'Avatar'}
+        label={'Thumbnails'}
         name='avatar'
         // value={form.avatar}
         type='file'
         onChange={handleChange}
       />
+     <TextInputWithLabel
+    label={'Title'}
+    name='title'
+    value={form?.title}
+    type='text'
+    onChange={handleChange}
+    
+
+    />
+
+  <TextAreaWithLabel
+    label={'Deskripsi'}
+    name='deskripsi'
+    value={form?.deskripsi}
+    type='text'
+    onChange={handleChange}
+    
+
+    />
 
     <TextInputWithLabel
     label={'Topic'}
@@ -38,7 +57,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     value={form?.topic}
     type='text'
     onChange={handleChange}
-    className='text-white'
+    
 
     />
      <span className={alertword}>{word.topic}/25</span>
@@ -55,9 +74,9 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     value={form?.content}
     type='text'
     onChange={handleChange}
-
+    
     />
-    <span className={alertword}>{word.content}/1200</span>
+    <span className={alertword}>{word.content}/1200</span><br/><br/>
    <SButton variant='primary' action={handleSubmit} loading={isLoading}>
       Upload
     </SButton>

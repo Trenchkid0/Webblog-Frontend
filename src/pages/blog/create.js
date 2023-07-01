@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 import SForm from './form'
+import SAlert from '../../components/Alert';
 import Layout from '../../components/Layout';
 
 
@@ -36,10 +37,7 @@ export default function BlogCreate() {
       content: 0,
       topic: 0,
     })
-    const [alertWord, setAlertWord] = useState({
-      content:'',
-      topic: '',
-    })
+    const [alertWord, setAlertWord] = useState()
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -97,10 +95,8 @@ export default function BlogCreate() {
         setForm({ ...form, [e.target.name]: e.target.value });
 
         setWord({...word,[e.target.name]:e.target.value.length});
-       
-
-
-       word.content >= 1200? setAlertWord('text-red-500'):setAlertWord('text-white');
+        // word.content >=1200 ? setAlertWord('text-red-500'): setAlertWord('text-white')
+        
       }
     };
 
@@ -117,26 +113,27 @@ export default function BlogCreate() {
       };
   
       const res = await postData('/cms/writer', payload);
-  
-      if (res.data.data) {
-        dispatch(
-          setNotif(
-            true,
-            'success',
-            `berhasil tambah blog ${res.data.data.title}`
-          )
-        );
-        navigate('/blog');
-        setIsLoading(false);
-      } else {
-        setIsLoading(false);
-        setAlert({
-          ...alert,
-          status: true,
-          type: 'danger',
-          message: res.response.data.msg,
-        });
-      }
+      console.log(res)
+      navigate('/');
+      // if (res.data.data) {
+      //   dispatch(
+      //     setNotif(
+      //       true,
+      //       'success',
+      //       `berhasil tambah blog ${res.data.data.title}`
+      //     )
+      //   );
+        // navigate('/blog');
+      //   setIsLoading(false);
+      // } else {
+      //   setIsLoading(false);
+      //   setAlert({
+      //     ...alert,
+      //     status: true,
+      //     type: 'danger',
+      //     message: res.response.data.msg,
+      //   });
+      // }
     };
 
 
@@ -144,7 +141,7 @@ export default function BlogCreate() {
     
     <>
     <Layout>
-
+    {/* {alert.status && <SAlert type={alert.type} message={alert.message} />} */}
       <SForm
         form={form}
         isLoading={isLoading}

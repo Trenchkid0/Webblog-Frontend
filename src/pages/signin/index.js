@@ -7,6 +7,9 @@ import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/auth/action';
 import Layout from '../../components/Layout';
+import axios from 'axios';
+
+import { config } from '../../config';
 
 function PageSignin() {
   const dispatch = useDispatch();
@@ -33,7 +36,7 @@ function PageSignin() {
   const handleSubmit = async () => {
     setIsLoading(true);
 
-    const res = await postData(`/auth/signin`, form);
+    const res = await axios.post(`${config.api_host_dev}${`/auth/signin`}`, form);
 
 
     if (res?.data?.data) {
