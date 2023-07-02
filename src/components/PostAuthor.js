@@ -4,6 +4,7 @@ import { Image } from 'react-bootstrap';
 export default function PostAuthor({
     partcipant
   }) {
+    
     return (
       <div className="flex items-center mt-5">
         <Image src={`${config.api_image}${partcipant.image.name}`} className="w-10 h-10 rounded-full object-cover" />

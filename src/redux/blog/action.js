@@ -7,6 +7,7 @@ import {
   import { getData } from '../../utils/fetch';
   import debounce from 'debounce-promise';
   import { clearNotif } from '../notif/action';
+
   
   let debouncedFetchBlog = debounce(getData, 1000);
   

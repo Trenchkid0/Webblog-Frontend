@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 import SForm from './form'
-import SAlert from '../../components/Alert';
 import Layout from '../../components/Layout';
 
 
@@ -20,7 +19,6 @@ export default function BlogCreate() {
       avatar: '',
       file: '',
       topic: '',
-      date: '',
       title: '',
       deskripsi: '',
       content: '',  
@@ -106,34 +104,31 @@ export default function BlogCreate() {
       const payload = {
         image: form.file,
         topic: form.topic,
-        date: form.date,
         title: form.title,
         deskripsi: form.deskripsi,
         content: form.content,
       };
   
       const res = await postData('/cms/writer', payload);
-      console.log(res)
-      navigate('/');
-      // if (res.data.data) {
-      //   dispatch(
-      //     setNotif(
-      //       true,
-      //       'success',
-      //       `berhasil tambah blog ${res.data.data.title}`
-      //     )
-      //   );
-        // navigate('/blog');
-      //   setIsLoading(false);
-      // } else {
-      //   setIsLoading(false);
-      //   setAlert({
-      //     ...alert,
-      //     status: true,
-      //     type: 'danger',
-      //     message: res.response.data.msg,
-      //   });
-      // }
+      if (res.data.data) {
+        dispatch(
+          setNotif(
+            true,
+            'success',
+            `berhasil tambah blog ${res.data.data.title}`
+          )
+        );
+        navigate('/blog');
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+        setAlert({
+          ...alert,
+          status: true,
+          type: 'danger',
+          message: res.response.data.msg,
+        });
+      }
     };
 
 

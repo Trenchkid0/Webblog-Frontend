@@ -7,13 +7,13 @@ export default function InfoPost({
   title,
   deskripsi,
   participant,
-  authorJob
+  createdAt,
 }) {
   return (
     <>
       <PostMetaTitle 
         topic={topic} 
-        date={date}
+        date={createdAt}
         title={title}
       />
       <p className="text-white/60 mt-5 w-10/12">

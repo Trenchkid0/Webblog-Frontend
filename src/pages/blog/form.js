@@ -61,13 +61,6 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
 
     />
      <span className={alertword}>{word.topic}/25</span>
-    <TextInputWithLabel
-    label={'date'}
-    name='date'
-    value={form?.date}
-    type='date'
-    onChange={handleChange}
-    />
     <TextAreaWithLabel
     label={'Isi Blog'}
     name='content'

@@ -3,7 +3,6 @@ import { Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import SAlert from '../../components/Alert';
 import SForm from './form';
-import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/auth/action';
 import Layout from '../../components/Layout';

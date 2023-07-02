@@ -9,7 +9,6 @@ export default function CardPost({
     ...infoPost 
 }) {
 
-
   return (
     <>
     <article>

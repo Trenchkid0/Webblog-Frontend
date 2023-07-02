@@ -12,7 +12,7 @@ export async function getData(url, params) {
     return await axios.get(`${config.api_host_dev}${url}`, {
       params,
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token.token}`,
       },
     });
   } catch (err) {
@@ -26,7 +26,6 @@ export async function postData(url, payload, formData) {
     ? JSON.parse(localStorage.getItem('auth'))
     : {};
 
-    // console.log(token.token)
       
 
     return await axios.post(`${config.api_host_dev}${url}`, payload, {

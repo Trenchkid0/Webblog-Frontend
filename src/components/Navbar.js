@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Container from './Container';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 // import { Figure } from 'react-bootstrap';
 import { config } from '../config';
-import { Button, Image } from 'react-bootstrap';
+import {  Image } from 'react-bootstrap';
 import SButton from './SButton';
 
 import { useNavigate } from 'react-router-dom';
@@ -63,7 +63,7 @@ export default function Navbar() {
                 <li onClick={()=>navigate('/blog')} ><Link className='text-white no-underline'> Home </Link></li>
                 <li>Front-End</li>
                 <li>Back-End</li>
-                <li>MyBlog</li>
+                <li onClick={()=>navigate(`/myblog/${token.participantsId}`)} className='cursor-pointer' >MyBlog</li>
                 
               </ul>
 

@@ -4,6 +4,7 @@ import GuestOnlyRoute from '../components/GuestOnlyRoute';
 
 
 import { BlogRoute } from './BlogRoutes';
+import { MyBlogRoute } from './Myblog';
 
 import Login from '../pages/signin';
 import Signup from '../pages/signup';
@@ -45,6 +46,7 @@ export function AppRoutes() {
         
               
          <Route path='blog/*' element={<BlogRoute />} />
+         <Route path='myblog/*' element={<MyBlogRoute />} />
          <Route path='' element={<Navigate to='/blog' replace={true} />} />
         </Route>
       </Routes>
