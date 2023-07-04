@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 import { config } from '../config'
 
 import { Figure } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function CardPost({ 
+  _id,
     image, 
     ...infoPost 
 }) {
-
+  const navigate = useNavigate()
   return (
     <>
     <article>
         
-      <Link href={`/detail/${infoPost._id}`}>
+      <li className="list-none cursor-pointer" onClick={()=>navigate(`/detail/${_id}`)}>
         <Figure>
           <Figure.Image
           className="w-full rounded mb-4"
@@ -23,8 +25,9 @@ export default function CardPost({
 
           
         </Figure>
-      </Link>
+      </li>
       <InfoPost
+        blogId={_id}
         {...infoPost}
       />
     </article>

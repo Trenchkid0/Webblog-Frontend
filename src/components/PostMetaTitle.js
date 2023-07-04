@@ -1,7 +1,9 @@
 import { formatDate } from '../utils/formatDate';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export default function PostMetaTitle({ topic,date,title}) {
+export default function PostMetaTitle({ topic,date,title,blogId}) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="flex items-center text-white/60 space-x-2">
@@ -15,7 +17,7 @@ export default function PostMetaTitle({ topic,date,title}) {
         </div>
       </div>
       <h2 className={'text-2xl mt-4'}>
-        <Link href="/detail" className='text-white font-small no-underline'>{title}</Link>
+        <li onClick={()=>navigate(`/detail/${blogId}`)} className='text-white font-small no-underline list-none cursor-pointer'>{title}</li>
       </h2>
     </>
   );

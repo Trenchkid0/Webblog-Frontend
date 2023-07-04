@@ -63,7 +63,7 @@ export default function Navbar() {
                 <li onClick={()=>navigate('/blog')} ><Link className='text-white no-underline'> Home </Link></li>
                 <li>Front-End</li>
                 <li>Back-End</li>
-                <li onClick={()=>navigate(`/myblog/${token.participantsId}`)} className='cursor-pointer' >MyBlog</li>
+                {/* <li onClick={()=>navigate(`/myblog/${token.participantsId}`)} className='cursor-pointer' >MyBlog</li> */}
                 
               </ul>
 
