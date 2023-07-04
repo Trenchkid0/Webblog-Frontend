@@ -5,8 +5,7 @@ import TextInputWithLabel from '../../components/TextInputWithLabel'
 import { Figure } from 'react-bootstrap'
 import { config } from '../../config'
 
-export default function SForm({form, handleChange, handleSubmit, isLoading,word,alertword}) {
-    console.log(alertword)
+export default function SForm({form, handleChange, handleSubmit, isLoading,word}) {
   return (
     <>
     {form.avatar !== '' && (
@@ -40,6 +39,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     
 
     />
+    <span className='my-5' >{word.title}/30</span>
 
   <TextAreaWithLabel
     label={'Deskripsi'}
@@ -50,6 +50,8 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     
 
     />
+    <span className='my-5' >{word.deskripsi}/500</span>
+    
 
     <TextInputWithLabel
     label={'Topic'}
@@ -57,10 +59,11 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     value={form?.topic}
     type='text'
     onChange={handleChange}
+    className='w-36'
     
 
     />
-     <span className={alertword}>{word.topic}/25</span>
+    <span className="my-4" >{word.topic}/25</span>
     <TextAreaWithLabel
     label={'Isi Blog'}
     name='content'
@@ -69,7 +72,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word,
     onChange={handleChange}
     
     />
-    <span className={alertword}>{word.content}/1200</span><br/><br/>
+    <span className="my-4" >{word.content}/1200</span><br/><br/>
    <SButton variant='primary' action={handleSubmit} loading={isLoading}>
       Upload
     </SButton>

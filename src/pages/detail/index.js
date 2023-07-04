@@ -8,7 +8,6 @@ import Layout from '../../components/Layout';
 import { Spinner } from 'react-bootstrap';
 
 import Container from '../../components/Container';
-import CardPost from '../../components/CardPost';
 import DetailPage from '../../components/DetailPage';
 
 
@@ -26,13 +25,10 @@ export default function DetailBlog() {
   useEffect(() => {
 
     fetctData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const blog = useSelector((state) => state.blog);
-  // console.log(blog);
-
-
-  console.log(tempData);
 
   return (
 

@@ -54,7 +54,6 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
         placeholder={'Masukan Avatar'}
         label={'Avatar'}
         name='avatar'
-        // value={form.avatar}
         type='file'
         onChange={handleChange}
       />
@@ -75,13 +74,13 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
       <SButtons
         loading={isLoading}
         disabled={isLoading}
-        variant='primary'
+        variant='light mr-5'
         action={handleSubmit}
       >
         Submit
       </SButtons>
       <SButtons
-        variant='primary'
+        variant='light'
         action={()=>navigate('/login')}
       >
         Sudah punya akun?

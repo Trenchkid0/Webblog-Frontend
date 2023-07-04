@@ -1,9 +1,7 @@
 import React from 'react'
 import { config } from '../config'
-import { Figure } from 'react-bootstrap'
 import {Image} from 'react-bootstrap'
 import PostMetaTitle from './PostMetaTitle'
-import InfoPost from './InfoPost'
 import PostAuthor from './PostAuthor'
 
 export default function DetailPage({

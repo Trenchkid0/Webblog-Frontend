@@ -1,7 +1,7 @@
 import React from 'react';
 import SButtons from '../../components/SButton';
 import TextInputWithLabel from '../../components/TextInputWithLabel';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
@@ -27,13 +27,13 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
       <SButtons
         loading={isLoading}
         disabled={isLoading}
-        variant='primary mt-5 mr-5'
+        variant='light mt-5 mr-5'
         action={handleSubmit}
       >
         Submit
       </SButtons>
       <SButtons
-        variant='primary mt-5'
+        variant='light mt-5'
         action={()=>navigate('/signup')}
       >
         Belum punya akun?

@@ -11,14 +11,14 @@ import {
   
   let debouncedFetchBlog = debounce(getData, 1000);
   
-  // START
+  
   export const startFetchingBlog = () => {
     return {
       type: START_FETCHING_BLOG,
     };
   };
   
-  // SUCCESS
+  
   export const successFetchingBlog = ({ blog }) => {
     return {
       type: SUCCESS_FETCHING_BLOG,

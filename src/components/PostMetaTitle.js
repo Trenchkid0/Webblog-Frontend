@@ -1,5 +1,4 @@
 import { formatDate } from '../utils/formatDate';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export default function PostMetaTitle({ topic,date,title,blogId}) {

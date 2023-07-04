@@ -1,5 +1,4 @@
 import InfoPost from "./InfoPost";
-import { Link } from "react-router-dom";
 import { config } from '../config'
 
 import { Figure } from "react-bootstrap";

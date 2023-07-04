@@ -9,7 +9,7 @@ export default function TextAreaWithLabel({
     type,
     onChange}) {
   return (
-    <Form.Group className='mb-2'>
+    <Form.Group className='my-6'>
       <Form.Label>{label}</Form.Label>
       <TextAreas
         type={type}

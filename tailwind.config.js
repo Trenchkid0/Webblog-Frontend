@@ -12,7 +12,8 @@ module.exports = {
         'sans': ['Patrick Hand', 'Arial', 'sans-serif']
       },
       height: {
-        '32': '35rem',
+        '35': '35rem',
+        '38': '38rem',
         '20': '20rem',
       }
     },

@@ -5,7 +5,6 @@ import SAlert from '../../components/Alert';
 import SForm from './form';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/auth/action';
-import Layout from '../../components/Layout';
 import axios from 'axios';
 
 import { config } from '../../config';
@@ -59,15 +58,15 @@ function PageSignin() {
   };
 
   return (
-    <Layout>
+    <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-screen'>
 
     <Container>
       <div className='m-auto' style={{ width: '50%' }}>
         {alert.status && <SAlert type={alert.type} message={alert.message} />}
       </div>
-      <Card style={{ width: '50%'}} className='m-auto top-28 '>
+      <Card style={{ width: '50%'}} className='m-auto top-28 bg-gradient-to-b from-gray-600 to-gray-900 border-none '>
         <Card.Body className='h-[20rem] mt-12'> 
-          <Card.Title className='text-center'>Form Signin</Card.Title>
+          <Card.Title className='text-center text-white'>Form Signin</Card.Title>
           <SForm
             form={form}
             handleChange={handleChange}
@@ -79,7 +78,7 @@ function PageSignin() {
       </Card>
     </Container>
 
-    </Layout>
+    </div>
     
   );
 }

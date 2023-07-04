@@ -34,8 +34,9 @@ export default function BlogCreate() {
     const [word, setWord] = useState({
       content: 0,
       topic: 0,
+      title:0,
+      deskripsi:0,
     })
-    const [alertWord, setAlertWord] = useState()
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -93,7 +94,6 @@ export default function BlogCreate() {
         setForm({ ...form, [e.target.name]: e.target.value });
 
         setWord({...word,[e.target.name]:e.target.value.length});
-        // word.content >=1200 ? setAlertWord('text-red-500'): setAlertWord('text-white')
         
       }
     };
@@ -136,14 +136,12 @@ export default function BlogCreate() {
     
     <>
     <Layout>
-    {/* {alert.status && <SAlert type={alert.type} message={alert.message} />} */}
       <SForm
         form={form}
         isLoading={isLoading}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         word={word}
-        alertword={alertWord}
       />
 
     </Layout>

@@ -1,31 +1,32 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Container from './Container';
-import React, { useEffect} from 'react';
+import React, { useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
-// import { Figure } from 'react-bootstrap';
 import { config } from '../config';
 import {  Image } from 'react-bootstrap';
 import SButton from './SButton';
 
 import { useNavigate } from 'react-router-dom';
-
-
-
-import { useDispatch,useSelector } from 'react-redux';
+import {useSelector } from 'react-redux';
 
 import Layout from '../components/Layout';
-import { Spinner } from 'react-bootstrap';
 
 import CardPost from '../components/CardPost';
-import { fetchBlog } from '../redux/blog/action';
+import axios from 'axios';
 
 export default function Navbar() { 
-  const dispatch = useDispatch();
-  const blog = useSelector((state) => state.blog);
 
+  const [tempData, setTempData] = useState([]);
+
+  const fetchData = async () => {
+    const res = await axios.get(`${config.api_host_dev}${`/cms/writer`}`);
+    setTempData(res.data.data);
+    
+  };
   useEffect(() => {
-     dispatch(fetchBlog());
- }, [dispatch]);
+    fetchData();
+ }, []);
+
 
   const navigate = useNavigate();
 
@@ -63,7 +64,6 @@ export default function Navbar() {
                 <li onClick={()=>navigate('/blog')} ><Link className='text-white no-underline'> Home </Link></li>
                 <li>Front-End</li>
                 <li>Back-End</li>
-                {/* <li onClick={()=>navigate(`/myblog/${token.participantsId}`)} className='cursor-pointer' >MyBlog</li> */}
                 
               </ul>
 
@@ -109,21 +109,13 @@ export default function Navbar() {
     {!token ?(
         <Layout>
         <Container>
-          {blog.status === 'process'?(
-            <div className='flex items-center justify-center'>
-              <Spinner animation='border' variant='primary' />
-            </div>
-          ):blog.data.length ? (
-              <div className="flex -mx-4 flex-wrap mt-6">
-                {blog.data.toReversed().map(post => ( 
+        <div className="flex -mx-4 flex-wrap mt-6">
+                {tempData.toReversed().map(post => ( 
                   <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
                   <CardPost {...post} />
               </div>
             ))}
             </div>
-          ):(
-            <h1>Tidak Ditemukan Data</h1>
-          )}
           
       </Container>
     </Layout>

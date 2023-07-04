@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-// import SAlert from '../../components/Alert';
 import SForm from './form';
 import SAlert from '../../components/Alert'
-import Layout from '../../components/Layout';
-
 import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { setNotif } from '../../redux/notif/action';
@@ -126,15 +123,17 @@ function PageSignup() {
 
   return (
     <>
-      <Layout>
+      {/* <Layout> */}
+      <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-[38rem]'>
+
 
         <Container>
           <div className='m-auto' style={{ width: '50%' }}>
             {alert.status && <SAlert type={alert.type} message={alert.message} />}
           </div>
-          <Card style={{ width: '50%'}} className='m-auto'>
-            <Card.Body className='h-[35rem] mt-10 '> 
-              <Card.Title className='text-center'>Form signup</Card.Title>
+          <Card style={{ width: '50%'}} className='m-auto  bg-gradient-to-b from-gray-600 to-gray-900'>
+            <Card.Body className='h-[35rem] mt-10'> 
+              <Card.Title className='text-center text-white'>Form signup</Card.Title>
               <SForm
                 form={form}
                 handleChange={handleChange}
@@ -147,7 +146,11 @@ function PageSignup() {
           
         </Container>
 
-      </Layout>
+
+      </div>
+
+
+      {/* </Layout> */}
 
 
     
