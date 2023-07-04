@@ -27,7 +27,6 @@ function PageSignin() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
-    console.log(e.target.value)
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 

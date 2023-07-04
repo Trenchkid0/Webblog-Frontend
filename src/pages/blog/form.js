@@ -26,7 +26,6 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word}
         placeholder={'Masukan Avatar'}
         label={'Thumbnails'}
         name='avatar'
-        // value={form.avatar}
         type='file'
         onChange={handleChange}
       />
