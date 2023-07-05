@@ -8,7 +8,8 @@ export default function TextAreas({name, value, type, onChange,}) {
         name={name}
         value={value} // state
         onChange={onChange}
-        className='h-44 bg-transparent caret-pink-500 text-white'
+        className='h-44 bg-transparent caret-pink-500 text-white mx-10 '
+        style={{ width: '85%' }}
     />
     
   )

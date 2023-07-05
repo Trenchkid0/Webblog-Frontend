@@ -42,7 +42,7 @@ export default function Navbar() {
     <>
 
     
-    <nav className="pt-5 bg-gradient-to-b from-gray-600 to-gray-900 text-white">
+    <nav className="pt-5 bg-gradient-to-b from-gray-600 to-gray-900 text-white  ">
       <Container>
        {token ?(
         <>

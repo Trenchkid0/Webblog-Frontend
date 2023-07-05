@@ -38,7 +38,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word}
     
 
     />
-    <span className='my-5' >{word.title}/30</span>
+    <span className='my-5 mx-10' >{word.title}/30</span>
 
   <TextAreaWithLabel
     label={'Deskripsi'}
@@ -49,7 +49,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word}
     
 
     />
-    <span className='my-5' >{word.deskripsi}/500</span>
+    <span className='my-5 mx-10' >{word.deskripsi}/500</span>
     
 
     <TextInputWithLabel
@@ -62,7 +62,7 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word}
     
 
     />
-    <span className="my-4" >{word.topic}/25</span>
+    <span className="my-4 mx-10" >{word.topic}/25</span>
     <TextAreaWithLabel
     label={'Isi Blog'}
     name='content'
@@ -71,8 +71,8 @@ export default function SForm({form, handleChange, handleSubmit, isLoading,word}
     onChange={handleChange}
     
     />
-    <span className="my-4" >{word.content}/1200</span><br/><br/>
-   <SButton variant='primary' action={handleSubmit} loading={isLoading}>
+    <span className="my-4 mx-10" >{word.content}/1200</span><br/><br/>
+   <SButton className='mx-10' variant='primary' action={handleSubmit} loading={isLoading}>
       Upload
     </SButton>
     

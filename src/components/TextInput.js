@@ -9,7 +9,9 @@ function TextInput({ name, value, type, onChange, placeholder }) {
       value={value} // state
       placeholder={placeholder}
       onChange={onChange}
-      className='bg-transparent caret-pink-50 text-white'
+      className='bg-transparent caret-pink-50 text-white mx-10'
+      style={{ width: '85%' }}
+
     />
   );
 }
