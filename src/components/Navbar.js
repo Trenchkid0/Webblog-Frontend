@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { config } from '../config';
 import {  Image } from 'react-bootstrap';
 import SButton from './SButton';
+import {Button} from 'react-bootstrap';
 
 import { useNavigate } from 'react-router-dom';
 import {useSelector } from 'react-redux';
@@ -29,6 +30,7 @@ export default function Navbar() {
 
 
   const navigate = useNavigate();
+  const [offcavnas, setOffcanvas] = useState(false);
 
   const {token} = useSelector((state) => state.auth)
 
@@ -46,34 +48,54 @@ export default function Navbar() {
       <Container>
        {token ?(
         <>
-        
-        
           <div className="flex items-center">
-            <div className="lg:w-2/12 w-6/12 flex items-center -mt-3 justify-center lg:justify-start ">
+            <div className="w-3/12 lg:hidden">
+              <button onClick={() => setOffcanvas(!offcavnas) }>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g opacity="0.4">
+                    <path d="M3 12H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 6H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 18H21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                </svg>
+              </button>
+            </div>
+            {/* <div className=" lg:w-2/12 w-6/12 flex  items-center -mt-3 justify-center lg:justify-start ">
                   <div className="">
                     <Image src={`${config.api_image}${token.profile}`} className="w-10 h-10 rounded-full object-cover mr-4" />
                 
                   </div>
                   {token.firstName}            
-            </div>
+            </div> */}
 
             
-            <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 lg:bg-none fixed lg:static top-0 h-full lg:h-auto p-10 lg:p-0 transition-all`}>
-            
+            <div className={`lg:w-7/12 w-full bg-gradient-to-b from-gray-600 to-gray-900 lg:bg-none fixed lg:static top-0 h-full lg:h-auto p-10 lg:p-0 transition-all ${offcavnas ? 'left-0' : '-left-full'}`}>
+            <button 
+              className="absolute top-10 right-10 lg:hidden"
+              onClick={() => setOffcanvas(false) }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
               <ul className="lg:space-x-14 flex lg:items-center flex-col lg:flex-row space-y-4 lg:space-y-0">
+              <div className=" lg:w-2/12 w-6/12 flex  items-center justify-center lg:justify-start ">
+                <div className="">
+                    <Image src={`${config.api_image}${token.profile}`} className="w-10 h-10 rounded-full object-cover mr-4" />
+                
+                  </div>
+                  {token.firstName}            
+                </div>
+
                 <li onClick={()=>navigate('/blog')} ><Link className='text-white no-underline'> Home </Link></li>
                 <li>Front-End</li>
                 <li>Back-End</li>
                 
               </ul>
 
-            
             </div>
-            
-              <li className='cursor-pointer ml-48 list-none' onClick={()=>handleLogout()}>LogOut</li>
+              <li className='lg:ml-96 lg:mb-2 ml-52 cursor-pointer list-none' onClick={()=>handleLogout()}>LogOut</li>
           </div>  
+          <Button className='lg:ml-[54rem] lg:-mt-24 ml-28 -mt-14  cursor-pointer w-32   btn-light' onClick={()=>navigate(`/blog/create`)} >Tulis blog</Button>
 
-          <SButton variant='cursor-pointer -mt-16 ml-[54rem] w-32  btn-light' action={()=>navigate(`/blog/create`)} >Tulis blog</SButton>
         </>
           
 

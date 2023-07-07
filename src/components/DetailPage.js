@@ -35,7 +35,7 @@ export default function DetailPage({
             />
       </div> 
       <div className="md:w-8/12 w-full mx-auto leading-relaxed">
-          <p className="text-xl text-center mb-4">
+          <p className=" lg:text-xl ml-2 mb-4">
            {content}
           </p>
         </div>
