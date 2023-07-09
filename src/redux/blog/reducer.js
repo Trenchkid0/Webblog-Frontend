@@ -2,6 +2,7 @@ import {
     START_FETCHING_BLOG,
     SUCCESS_FETCHING_BLOG,
     ERROR_FETCHING_BLOG,
+    SET_KEYWORD,
   } from './constant';
   
   const statuslist = {
@@ -14,6 +15,7 @@ import {
   const initialState = {
     data: [],
     status: statuslist.idle,
+    keyword: '',
   };
   
   export default function reducer(state = initialState, action) {
@@ -29,6 +31,11 @@ import {
           ...state,
           status: statuslist.success,
           data: action.blog,
+        };
+      case SET_KEYWORD:
+        return {
+          ...state,
+          keyword: action.keyword,
         };
   
       default:

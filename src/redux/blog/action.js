@@ -2,6 +2,7 @@ import {
     START_FETCHING_BLOG,
     SUCCESS_FETCHING_BLOG,
     ERROR_FETCHING_BLOG,
+    SET_KEYWORD,
   } from './constant';
   
   import { getData } from '../../utils/fetch';
@@ -33,15 +34,19 @@ import {
   };
   
   export const fetchBlog = () => {
-    return async (dispatch) => {
+    return async (dispatch,getState) => {
       dispatch(startFetchingBlog());
   
       try {
         setTimeout(() => {
           dispatch(clearNotif());
         }, 3000);
+
+        let params = {
+          keyword: getState().blog.keyword,
+        };
   
-        let res = await debouncedFetchBlog('/cms/writer');
+        let res = await debouncedFetchBlog('/cms/writer',params);
   
         dispatch(
             successFetchingBlog({
@@ -51,6 +56,13 @@ import {
       } catch (error) {
         dispatch(errorFetchingBlog());
       }
+    };
+  };
+
+  export const setKeyword = (keyword) => {
+    return {
+      type: SET_KEYWORD,
+      keyword,
     };
   };
   
