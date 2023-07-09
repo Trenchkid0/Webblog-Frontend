@@ -5,6 +5,7 @@ import GuestOnlyRoute from '../components/GuestOnlyRoute';
 
 import { BlogRoute } from './BlogRoutes';
 import { DetailRoute } from './DetailRoute';
+import { MyBlogRoute } from './MyBlogRoutes';
 
 import Login from '../pages/signin';
 import Signup from '../pages/signup';
@@ -42,11 +43,10 @@ export function AppRoutes() {
               <GuardRoute />
             </>
           }
-        >
-        
-              
+        >  
          <Route path='blog/*' element={<BlogRoute />} />
          <Route path='detail/*' element={<DetailRoute />} />
+         <Route path='myblog/*' element={<MyBlogRoute />} />
          <Route path='' element={<Navigate to='/blog' replace={true} />} />
         </Route>
       </Routes>
