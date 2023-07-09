@@ -11,7 +11,7 @@ function TextInputWithLabel({
   placeholder,
 }) {
   return (
-    <Form.Group className='mb-2 text-white'>
+    <Form.Group className='mb-2 text-white mt-4 '>
       <Form.Label className='mx-10'>{label}</Form.Label>
       <TextInput
         type={type}
