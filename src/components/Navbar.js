@@ -109,7 +109,7 @@ export default function Navbar() {
                 <input type='text' className='bg-gray-700 py-3 px-6 w-full lg:rounded-full rounded-lg bg-search pl-12' 
                 onChange={(e)=> dispatch(setKeyword(e.target.value))}
                 query={blog.keyword}
-                
+                placeholder='search...'
                 />
               </div>
               <div className="w-3/12 lg:hidden  text-right">

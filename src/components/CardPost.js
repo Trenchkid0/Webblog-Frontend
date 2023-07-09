@@ -14,7 +14,7 @@ export default function CardPost({
     <>
     <article>
         
-      <li className="list-none cursor-pointer" onClick={()=>navigate(`/detail/${_id}`)}>
+      <li className="list-none cursor-pointer " onClick={()=>navigate(`/detail/${_id}`)}>
         <Figure>
           <Figure.Image
           className="w-full rounded mb-4"

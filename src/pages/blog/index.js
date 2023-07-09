@@ -33,7 +33,7 @@ export default function Blog() {
         ):blog.data.length ? (
             <div className="flex -mx-4 flex-wrap mt-6">
               {blog.data.toReversed().map(post => ( 
-                <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
+                <div key={post._id} className="md:w-4/12 w-full px-4 py-6">
                 <CardPost {...post} />
             </div>
           ))}

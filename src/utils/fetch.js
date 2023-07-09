@@ -38,3 +38,21 @@ export async function postData(url, payload, formData) {
     return handleError(err);
   }
 }
+
+export async function deleteData(url) {
+  try {
+    const { token } = localStorage.getItem('auth')
+      ? JSON.parse(localStorage.getItem('auth'))
+      : {};
+
+      console.log(token.token)
+
+    return await axios.delete(`${config.api_host_dev}${url}`, {
+      headers: {
+        Authorization: `Bearer ${token.token}`,
+      },
+    });
+  } catch (err) {
+    return handleError(err);
+  }
+}
