@@ -33,20 +33,11 @@ export default function MyBlog() {
         }).then(async (result) => {
           if (result.isConfirmed) {
             const res = await deleteData(`/cms/writer/${id}`);
-            console.log(res)
 
             Swal.fire({
-                title: 'Berhasil Terhapus',
+                title: ` ${res.data.data.title} Berhasil Terhapus`,
                 icon: 'success',
               })
-    
-            // dispatch(
-            //   setNotif(
-            //     true,
-            //     'success',
-            //     `berhasil hapus speaker ${res.data.data.title}`
-            //   )
-            // );
     
             dispatch(fetchBlog());
           }
