@@ -16,7 +16,7 @@ function PageSignup() {
     firstName:'',
     lastName:'',
     email: '',
-    password: '',
+    role: '',
     file: '',
     avatar: '',
   });
@@ -92,7 +92,6 @@ function PageSignup() {
       firstName:form.firstName,
       lastName:form.lastName,
       email:form.email,
-      password:form.password,
       image: form.file,
       role: form.role,
     };

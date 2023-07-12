@@ -3,7 +3,7 @@ import Container from './Container';
 import React, { useEffect,useState} from 'react';
 import { Link } from 'react-router-dom';
 import { config } from '../config';
-import {  Image } from 'react-bootstrap';
+import {  Image, NavDropdown } from 'react-bootstrap';
 import SButton from './SButton';
 import {Button} from 'react-bootstrap';
 
@@ -82,11 +82,19 @@ export default function Navbar() {
             </button>
               <ul className="lg:space-x-14 flex lg:items-center flex-col lg:flex-row space-y-4 lg:space-y-0">
               <div className=" lg:w-2/12 w-6/12 flex  items-center justify-center lg:justify-start ">
+                <NavDropdown menuVariant="dark" className=''>
+                  <NavDropdown.Item  onClick={()=>navigate(`/myprofile/${token.participantsId}`)}>MyProfile</NavDropdown.Item> 
+                </NavDropdown> 
                 <div className="">
-                    <Image src={`${config.api_image}${token.profile}`} className="w-10 h-10 rounded-full object-cover mr-4" />
+                    <Image src={`${config.api_image}${token.profile}`} className="w-10 h-10 rounded-full object-cover  " />
                 
                   </div>
-                  {token.firstName}            
+                  <div className='ml-1'>
+                    
+                    {token.firstName}            
+
+                  </div>
+                  
                 </div>
                
 

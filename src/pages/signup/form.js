@@ -35,6 +35,14 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
         onChange={handleChange}
       />
       <TextInputWithLabel
+        placeholder={'role'}
+        label={'Role'}
+        name='role'
+        value={form?.role}
+        type='text'
+        onChange={handleChange}
+      />
+      <TextInputWithLabel
         placeholder={'password'}
         label={'password'}
         name='password'
