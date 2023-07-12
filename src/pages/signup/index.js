@@ -33,9 +33,10 @@ function PageSignup() {
     let formData = new FormData();
     formData.append('avatar', file);
     const res = await postData('/cms/images', formData, true);
+    // console.log(res);
     return res;
   };
-
+  
   const handleChange = async (e) => {
     if (e.target.name === 'avatar') {
       if (
@@ -79,11 +80,11 @@ function PageSignup() {
           [e.target.name]: '',
         });
       }
-    } else {
+    }else {
       setForm({ ...form, [e.target.name]: e.target.value });
+      
     }
   };
-
 
   const handleSubmit = async () => {
     setIsLoading(true);
@@ -123,7 +124,7 @@ function PageSignup() {
   return (
     <>
       {/* <Layout> */}
-      <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-[38rem]'>
+      <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-[50rem]'>
 
 
         <Container>

@@ -58,7 +58,7 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
           placeholder='ex: Product Designer'
           onChange={handleChange}
         />
-        <TextInputWithLabel
+       <TextInputWithLabel
         placeholder={'Masukan Avatar'}
         label={'Avatar'}
         name='avatar'
@@ -78,7 +78,7 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
             <Figure.Caption>Perview image avatar</Figure.Caption>
           </Figure>
         </div>
-      )}
+      )}s
       <SButtons
         loading={isLoading}
         disabled={isLoading}

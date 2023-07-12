@@ -44,6 +44,7 @@ export default function BlogCreate() {
       let formData = new FormData();
       formData.append('avatar', file);
       const res = await postData('/cms/images', formData, true);
+      console.log(res);
       return res;
     };
     

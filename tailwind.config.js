@@ -12,6 +12,7 @@ module.exports = {
     },
     extend: {
       margin: {
+        '38rem':'38rem',
         '54rem': '54rem',
         '58rem': '65rem',
       },
@@ -20,7 +21,7 @@ module.exports = {
       },
       height: {
         '35': '35rem',
-        '38': '38rem',
+        '50': '50rem',
         '20': '20rem',
       }
     },

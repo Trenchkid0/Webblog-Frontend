@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getData } from '../../utils/fetch';
 import { postData,putData } from '../../utils/fetch';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 import SForm from './form';
 import Layout from '../../components/Layout';
@@ -18,7 +19,6 @@ export default function MyProfileEdit() {
         lastName:'',
         email: '',
         role:'',
-        password: '',
         file: '',
         avatar: '',
       });
@@ -33,16 +33,19 @@ export default function MyProfileEdit() {
 
       const fetchProfile = async()=>{
         const res = await getData(`/cms/participants/${userId}`);
+        console.log(res.data.data);
         
         res.data.data.forEach((respData)=>{
+            console.log(respData.image._id);
             setForm({
                 ...form,
                 firstName:respData.firstName,
                 lastName:respData.lastName,
                 email:respData.email,
-                password:respData.password,
                 role:respData.role,
                 avatar:respData.image.name,
+                file:respData.image._id,
+
             }            
                 )
         })
@@ -117,12 +120,29 @@ export default function MyProfileEdit() {
             lastName:form.lastName,
             email: form.email,
             role:form.role,
-            password: form.password,
             image: form.file,
           };
     
         const res = await putData(`/cms/participants/${userId}`, payload);
-        navigate(`/myprofile/${userId}`);
+        // navigate(`/myprofile/${userId}`);
+
+        if (res.data.data) {
+            Swal.fire({
+                title: `Data ${res.data.data.firstName} Berhasil Terupdate`,
+                icon: 'success',
+            })
+    
+          navigate(`/myprofile/${userId}`);
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+          setAlert({
+            ...alert,
+            status: true,
+            type: 'danger',
+            message: res.response.data.msg,
+          });
+        }
         
       };
     
