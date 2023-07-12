@@ -6,6 +6,8 @@ import SAlert from '../../components/Alert'
 import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { setNotif } from '../../redux/notif/action';
+import axios from 'axios';
+import { config } from '../../config';
 
 
 function PageSignup() {
@@ -32,8 +34,7 @@ function PageSignup() {
   const uploadImage = async (file) => {
     let formData = new FormData();
     formData.append('avatar', file);
-    const res = await postData('/cms/images', formData, true);
-    // console.log(res);
+    const res = await axios.post(`${config.api_host_dev}${`/cms/images`}`, formData, true);
     return res;
   };
   
@@ -124,7 +125,7 @@ function PageSignup() {
   return (
     <>
       {/* <Layout> */}
-      <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-[50rem]'>
+      <div className=' bg-gradient-to-b from-gray-600 to-gray-900 h-[75rem]'>
 
 
         <Container>
@@ -132,7 +133,7 @@ function PageSignup() {
             {alert.status && <SAlert type={alert.type} message={alert.message} />}
           </div>
           <Card style={{ width: '50%'}} className='m-auto  bg-gradient-to-b from-gray-600 to-gray-900'>
-            <Card.Body className='h-[35rem] mt-10'> 
+            <Card.Body className='h-[60rem] mt-10'> 
               <Card.Title className='text-center text-white'>Form signup</Card.Title>
               <SForm
                 form={form}

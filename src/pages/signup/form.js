@@ -72,13 +72,14 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
               width={171}
               height={180}
               alt='171x180'
+              className='lg:ml-10'
               src={`${config.api_image}${form.avatar}`}
             />
 
             <Figure.Caption>Perview image avatar</Figure.Caption>
           </Figure>
         </div>
-      )}s
+      )}
       <SButtons
         loading={isLoading}
         disabled={isLoading}
