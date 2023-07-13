@@ -6,6 +6,7 @@ import { config } from '../config';
 import {  Image, NavDropdown } from 'react-bootstrap';
 import SButton from './SButton';
 import {Button} from 'react-bootstrap';
+import FeaturedPost from './FeaturedPost';
 
 import {
   fetchBlog,
@@ -29,6 +30,8 @@ export default function Navbar() {
   const [tempData, setTempData] = useState([]);
   const [tempDataUser, setTempDataUser] = useState([]);
 
+  console.log(tempData);
+
   useEffect(() => {
     dispatch(fetchBlog());
   }, [dispatch, blog.keyword]);
@@ -38,7 +41,6 @@ export default function Navbar() {
     setTempData(res.data.data);
     
   };
-
 
 
   
@@ -185,6 +187,7 @@ export default function Navbar() {
         <Layout>
         <Container>
         <div className="flex -mx-4 flex-wrap mt-6">
+              {/* <FeaturedPost data={tempData.toReversed()} /> */}
                 {tempData.toReversed().map(post => ( 
                   <div key={post.id} className="md:w-4/12 w-full px-4 py-6">
                   <CardPost {...post} />
