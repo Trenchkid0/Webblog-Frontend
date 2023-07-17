@@ -39,6 +39,9 @@ export async function postData(url, payload, formData) {
   }
 }
 
+
+
+
 export async function deleteData(url) {
   try {
     const { token } = localStorage.getItem('auth')

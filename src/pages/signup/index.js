@@ -3,7 +3,6 @@ import { Card, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import SForm from './form';
 import SAlert from '../../components/Alert'
-import { postData } from '../../utils/fetch';
 import { useDispatch } from 'react-redux';
 import { setNotif } from '../../redux/notif/action';
 import axios from 'axios';
@@ -17,6 +16,7 @@ function PageSignup() {
   const [form, setForm] = useState({
     firstName:'',
     lastName:'',
+    password: '',
     email: '',
     role: '',
     file: '',
@@ -83,6 +83,7 @@ function PageSignup() {
       }
     }else {
       setForm({ ...form, [e.target.name]: e.target.value });
+      console.log(e.target.name);
       
     }
   };
@@ -93,12 +94,13 @@ function PageSignup() {
     const payload = {
       firstName:form.firstName,
       lastName:form.lastName,
+      password:form.password,
       email:form.email,
       image: form.file,
       role: form.role,
     };
 
-    const res = await postData(`/auth/signup`, payload);
+    const res = await axios.post(`${config.api_host_dev}${`/auth/signup`}`, payload);
 
     if (res.data.data) {
       dispatch(

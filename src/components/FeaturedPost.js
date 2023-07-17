@@ -1,5 +1,3 @@
-// import Link from 'next/link';
-import { useState } from 'react';
 import InfoPost from './InfoPost';
 import { config } from '../config'
 
@@ -9,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function FeaturedPost({data}) {
 
-  // console.log(data[0])
     const navigate = useNavigate()
 
   return (

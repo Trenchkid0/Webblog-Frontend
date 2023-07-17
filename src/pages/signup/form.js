@@ -42,23 +42,15 @@ export default function SForm({ form, handleChange, handleSubmit, isLoading }) {
         type='text'
         onChange={handleChange}
       />
-      <TextInputWithLabel
-        placeholder={'password'}
-        label={'password'}
+       <TextInputWithLabel
+        placeholder={'Masukan password'}
+        label={'Password'}
         name='password'
         value={form?.password}
         type='password'
         onChange={handleChange}
       />
-       <TextInputWithLabel
-          label={'Role'}
-          type={'text'}
-          value={form?.role}
-          name='role'
-          placeholder='ex: Product Designer'
-          onChange={handleChange}
-        />
-       <TextInputWithLabel
+      <TextInputWithLabel
         placeholder={'Masukan Avatar'}
         label={'Avatar'}
         name='avatar'
