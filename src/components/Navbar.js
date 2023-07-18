@@ -128,7 +128,7 @@ export default function Navbar() {
 
             </div>
             <li className='lg:ml-96 lg:mb-2 ml-52 cursor-pointer list-none' onClick={() => handleLogout()}>LogOut</li>
-          </div><Button className='lg:ml-[54rem] lg:-mt-24 ml-28 -mt-14  cursor-pointer w-32   btn-light' onClick={() => navigate(`/blog/create`)}>Tulis blog</Button><div className={`lg:w-3/12 absolute lg:static w-full left-0 px-10 lg:px-0 transition-all ${search ? 'top-10' : '-top-40'}`}>
+          </div><Button className='lg:ml-[54rem] lg:-mt-24 ml-28 -mt-14  cursor-pointer w-32   btn-light' onClick={() => navigate(`/blog/create`)}>Write</Button><div className={`lg:w-3/12 absolute lg:static w-full left-0 px-10 lg:px-0 transition-all ${search ? 'top-10' : '-top-40'}`}>
               <button
                 className="absolute top-3 right-14 lg:hidden" onClick={() => setSearch(false)}
               >
